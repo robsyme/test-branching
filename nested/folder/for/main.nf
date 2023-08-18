@@ -1,3 +1,3 @@
 workflow {
-    log.info "Success from main branch!"
+    log.info "Success from master branch!"
 }
