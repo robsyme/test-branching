@@ -10,10 +10,17 @@ process UseFile {
     script: "ls -lha"
 }
 
+process UseFileStageInMode {
+    stageInMode 'copy'
+    debug true
+    input: path(infile)
+    script: "ls -lha"
+}
+
 workflow {
     log.info "Success from master branch!"
 
     Channel.from("Rob")
     | MakeFile
-    | UseFile
+    | (UseFile & UseFileStageInMode)
 }
